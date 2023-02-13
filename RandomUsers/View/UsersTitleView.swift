@@ -10,9 +10,13 @@ import SwiftUI
 
 struct UsersTitleView<Model>: View where Model: RandomUsersViewModelProtocol{
     
+    private var title: String
+    @State private var imageURL: String
     @ObservedObject private var viewModel: Model
     
-    init(viewModel: Model) {
+    init(title: String, imageURL: String, viewModel: Model) {
+        self.title = title
+        self.imageURL = imageURL
         self.viewModel = viewModel
     }
     
