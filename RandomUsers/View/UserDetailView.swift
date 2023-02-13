@@ -12,6 +12,11 @@ struct UserDetailView<Model>: View where Model: RandomUsersViewModelProtocol {
     var userModel: UserModel
     @ObservedObject var viewModel: Model
     
+    let columns = [
+            GridItem(.fixed(100)),
+            GridItem(.flexible()),
+        ]
+    
     var body: some View {
         VStack {
             Image(uiImage: (UIImage(data: (viewModel.imageList[userModel.picture.large] ?? Data()) ?? Data()) ?? UIImage(named: "placeholder")) ?? UIImage())
@@ -23,8 +28,19 @@ struct UserDetailView<Model>: View where Model: RandomUsersViewModelProtocol {
             Divider()
             Text("")
                 .frame(height: 25.0)
+            LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(fetchData(), id: \.self) { item in  //Find why we need id: \.self
+                        Text(item).frame(alignment: .center)
+                    }
+                }
+                .padding(.horizontal)
         }
         .navigationBarTitle(userModel.name.fullName, displayMode: .inline)
+    
+    func fetchData() -> [String] {
+        return ["Name:", userModel.name.fullName, "Gender:" , userModel.gender,
+                "Location:", userModel.location.description, "Email:", userModel.email,
+                "Phone:", userModel.phone]
     }
 }
 
