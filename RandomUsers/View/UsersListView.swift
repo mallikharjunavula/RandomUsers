@@ -9,7 +9,11 @@ import SwiftUI
 
 struct UsersListView<Model>: View where Model: RandomUsersViewModelProtocol {
     
+    @State private var searchText = ""
     @StateObject private var viewModel: Model
+    @State var filteredUsers: [User] = []
+    @State var pick : Int = 0
+    @State var filterResultsEmpty = false
     
     init(viewModel: Model) {
         self._viewModel = StateObject(wrappedValue: viewModel)
@@ -105,9 +109,40 @@ struct UsersListView<Model>: View where Model: RandomUsersViewModelProtocol {
                 }
             }
     }
+    
+    var resultsData: [User] {
+        if filterResultsEmpty {
+            return []
+        } else if filteredUsers.count != 0 {
+            return filteredUsers
+        } else {
+            return viewModel.randomUsers
+        }
+    }
+    
+    func updateFilters() {
+        guard !(searchText.isEmpty) else {
+            filteredUsers = viewModel.randomUsers
+            updateGenderResults()
+            return
+        }
+        filteredUsers = viewModel.randomUsers.filter{ $0.userModel.name.fullName.contains(searchText) }
+        updateGenderResults()
+    }
+    
+    func updateGenderResults() {
+        switch pick {
+        case 1: filteredUsers = filteredUsers.filter { $0.userModel.gender == "male" }
+        case 2: filteredUsers = filteredUsers.filter { $0.userModel.gender == "female" }
+        default: break
+        }
+        filterResultsEmpty = filteredUsers.count == 0
+    }
+    
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
+}
 
 struct User: Identifiable {
     public var id = UUID()
