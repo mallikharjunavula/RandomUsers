@@ -37,5 +37,34 @@ enum Endpoint {
         return URL(string: stringValue)
     }
 }
+
+extension APIModule: DataFetcher {
+    
+    func fetchRandomUsers() -> AnyPublisher<RandomUsers, APIError> {
+        return fetchRequest(with: Endpoint.randomUsers.url, session: sessionManager)
+    }
+    func fetchRequest<T>(with url: URL?, session: URLSession) -> AnyPublisher<T, APIError> where T: Decodable {
+        guard let url = url else {
+            return Fail(error: APIError.requestError(message: "Invalid URL")).eraseToAnyPublisher()
+        }
+        return sessionManager.dataTaskPublisher(for: URLRequest(url: url))
+          .mapError { error in
+             .networkError(message: error.localizedDescription)
+          }
+          .flatMap(maxPublishers: .max(1)) { response in
+              self.decode(response.data)
+          }
+          .eraseToAnyPublisher()
+    }
+    
+    func decode<T: Decodable>(_ data: Data) -> AnyPublisher<T, APIError> {
+      let decoder = JSONDecoder()
+
+      return Just(data)
+        .decode(type: T.self, decoder: decoder)
+        .mapError { error in
+            .parsing(message: error.localizedDescription)
+        }
+        .eraseToAnyPublisher()
     }
 }
