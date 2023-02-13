@@ -14,6 +14,7 @@ struct UsersListView<Model>: View where Model: RandomUsersViewModelProtocol {
     @State var filteredUsers: [User] = []
     @State var pick : Int = 0
     @State var filterResultsEmpty = false
+    @State var isEditing = false
     
     init(viewModel: Model) {
         self._viewModel = StateObject(wrappedValue: viewModel)
