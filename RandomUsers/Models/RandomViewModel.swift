@@ -27,3 +27,41 @@ class RandomUsersViewModel {
         randomUsers = []
     }
 }
+
+extension RandomUsersViewModel: RandomUsersViewModelProtocol {
+    
+    func fetchRandomUsers() {
+        dataFetcher.fetchRandomUsers()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] value in
+                switch value {
+                case .failure(let apiError):
+                    print(apiError)
+                    self?.randomUsers = []
+                case .finished:
+                    break
+                }
+            } receiveValue: { [weak self] usersResponse in
+                print(usersResponse)
+                self?.randomUsers = usersResponse.results.map{ User(user: $0) }
+            }
+            .store(in: &disposables)
+    }
+    
+    func fetchImage(imageURL: String) {
+        dataFetcher.fetchImage(endpoint: .fetchImage(imageUrl: imageURL))
+            .receive(on: DispatchQueue.main)
+            .sink { value in
+                switch value {
+                case .failure(let apiError):
+                    print(apiError)
+                case .finished:
+                    break
+                }
+            } receiveValue: { [weak self] usersResponse in
+                print(usersResponse)
+                self?.imageList[imageURL] = usersResponse
+            }
+            .store(in: &disposables)
+    }
+}
