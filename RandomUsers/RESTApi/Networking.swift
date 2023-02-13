@@ -43,6 +43,19 @@ extension APIModule: DataFetcher {
     func fetchRandomUsers() -> AnyPublisher<RandomUsers, APIError> {
         return fetchRequest(with: Endpoint.randomUsers.url, session: sessionManager)
     }
+    
+    func fetchImage(endpoint: Endpoint) -> AnyPublisher<Data, APIError> {
+        guard let url = endpoint.url else {
+            return Fail(error: APIError.requestError(message: "Invalid URL")).eraseToAnyPublisher()
+        }
+        return sessionManager.dataTaskPublisher(for: URLRequest(url: url))
+          .mapError { error in
+             .networkError(message: error.localizedDescription)
+          }
+          .map { $0.data }
+          .eraseToAnyPublisher()
+    }
+    
     func fetchRequest<T>(with url: URL?, session: URLSession) -> AnyPublisher<T, APIError> where T: Decodable {
         guard let url = url else {
             return Fail(error: APIError.requestError(message: "Invalid URL")).eraseToAnyPublisher()
