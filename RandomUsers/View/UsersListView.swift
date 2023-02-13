@@ -158,3 +158,18 @@ struct ContentView_Previews: PreviewProvider {
         UsersListView(viewModel: RandomUsersViewModel(apiFetcher: APIModule()))
     }
 }
+
+extension Color {
+    static var lightGrey: Color {
+        return Color(red: 245/255, green: 245/255, blue: 245/255)
+    }
+    
+    static var mediumGrey: Color {
+        return Color(red: 237/255, green: 237/255, blue: 237/255)
+    }
+    
+    static var darkGrey: Color {
+        return Color(red: 225/255, green: 225/255, blue: 225/255)
+    }
+}
+
