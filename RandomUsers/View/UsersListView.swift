@@ -17,6 +17,25 @@ struct UsersListView<Model>: View where Model: RandomUsersViewModelProtocol {
     
     var body: some View {
         Text("HelloWorld")
+        NavigationView {
+                // List of the RandomUsers
+                List {
+                    ForEach(resultsData) { user in
+                        NavigationLink {
+                            UserDetailView(userModel: user.userModel, viewModel: viewModel)
+                        } label: {
+                            UsersTitleView(title: user.userModel.name.fullName, imageURL: user.userModel.picture.large, viewModel: viewModel)
+                        }
+                    }
+                }
+                //Can remove the White space on the top of the List by uncommenting below
+                //.listStyle(.plain)
+            }
+            .navigationBarTitle("List")
+        }
+        .onAppear {
+            viewModel.fetchRandomUsers()
+        }
     }
     
 
