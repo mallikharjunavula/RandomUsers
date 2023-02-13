@@ -18,6 +18,8 @@ struct UsersListView<Model>: View where Model: RandomUsersViewModelProtocol {
     var body: some View {
         Text("HelloWorld")
         NavigationView {
+                //Hstack for whole Searchbar and Cancel Button
+                HStack{
                     CustomSearchBar()
                         .frame(height: 35.0)
                         .background(RoundedRectangle(cornerRadius: 20).fill(Color.mediumGrey))
@@ -26,6 +28,18 @@ struct UsersListView<Model>: View where Model: RandomUsersViewModelProtocol {
                             RoundedRectangle(cornerRadius: 20.0)
                                 .stroke(Color.darkGrey, lineWidth: 2) )
                         .padding([.leading, .trailing], 8.0)
+                    //Add the Cancel Button trailing to SearchBar to end editing
+                    if isEditing {
+                        Text("Cancel")
+                            .foregroundColor(Color.black)
+                            .onTapGesture {
+                                searchText = ""
+                                isEditing = false
+                                hideKeyboard()
+                            }
+                            .padding(.trailing, 5.0)
+                    }
+                }
                 // List of the RandomUsers
                 List {
                     ForEach(resultsData) { user in
@@ -71,6 +85,9 @@ struct UsersListView<Model>: View where Model: RandomUsersViewModelProtocol {
                     .padding(.trailing, 8.0)
                 }
             }
+    }
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 
 struct ContentView_Previews: PreviewProvider {
