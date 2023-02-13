@@ -13,7 +13,18 @@ struct UserDetailView<Model>: View where Model: RandomUsersViewModelProtocol {
     @ObservedObject var viewModel: Model
     
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            Image(uiImage: (UIImage(data: (viewModel.imageList[userModel.picture.large] ?? Data()) ?? Data()) ?? UIImage(named: "placeholder")) ?? UIImage())
+                .resizable()
+                .frame(width: 150.0, height: 150.0)
+                .cornerRadius(30.0)
+            Text("")
+                .frame(height: 10.0)
+            Divider()
+            Text("")
+                .frame(height: 25.0)
+        }
+        .navigationBarTitle(userModel.name.fullName, displayMode: .inline)
     }
 }
 
