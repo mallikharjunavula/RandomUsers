@@ -40,6 +40,12 @@ struct UsersListView<Model>: View where Model: RandomUsersViewModelProtocol {
                             .padding(.trailing, 5.0)
                     }
                 }
+                // View for Filter button
+                HStack {
+                    Spacer()
+                    CustomPicker()
+                        .padding(.trailing, 30.0)
+                }
                 // List of the RandomUsers
                 List {
                     ForEach(resultsData) { user in
@@ -58,6 +64,19 @@ struct UsersListView<Model>: View where Model: RandomUsersViewModelProtocol {
         .onAppear {
             viewModel.fetchRandomUsers()
         }
+    }
+    
+    // Picker View for the filterOptions based on gender
+    func CustomPicker() -> some View {
+        return Picker(selection: $pick, label: Text("")) {
+                Text("All").tag(0).foregroundColor(.cyan)
+                Text("Male").tag(1).foregroundColor(.cyan)
+                Text("Female").tag(2).foregroundColor(.cyan)
+            }
+            .frame(width: 60.0)
+            .onChange(of: pick) { _ in updateFilters() }
+            .overlay( RoundedRectangle(cornerRadius: 20.0)
+                .stroke(Color.lightGrey, lineWidth: 3.0))
     }
     
     //HStack for the Searchbar and back button inside searchbar
