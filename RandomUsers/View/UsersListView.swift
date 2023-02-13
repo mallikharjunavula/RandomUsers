@@ -109,6 +109,15 @@ struct UsersListView<Model>: View where Model: RandomUsersViewModelProtocol {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 
+struct User: Identifiable {
+    public var id = UUID()
+    var userModel: UserModel
+    
+    public init(user: UserModel) {
+        self.userModel = user
+    }
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         UsersListView(viewModel: RandomUsersViewModel(apiFetcher: APIModule()))
