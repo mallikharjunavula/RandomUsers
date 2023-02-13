@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F88B2D6A2999FA630064F594 /* RandomUsersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B2D692999FA630064F594 /* RandomUsersApp.swift */; };
-		F88B2D6C2999FA630064F594 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B2D6B2999FA630064F594 /* ContentView.swift */; };
 		F88B2D6E2999FA640064F594 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88B2D6D2999FA640064F594 /* Assets.xcassets */; };
 		F88B2D712999FA640064F594 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88B2D702999FA640064F594 /* Preview Assets.xcassets */; };
 		F88B2D7B2999FA650064F594 /* RandomUsersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B2D7A2999FA650064F594 /* RandomUsersTests.swift */; };
 		F88B2D852999FA650064F594 /* RandomUsersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B2D842999FA650064F594 /* RandomUsersUITests.swift */; };
 		F88B2D872999FA650064F594 /* RandomUsersUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B2D862999FA650064F594 /* RandomUsersUITestsLaunchTests.swift */; };
+		F88B2D9E2999FB9F0064F594 /* RandomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B2D942999FB9F0064F594 /* RandomViewModel.swift */; };
+		F88B2D9F2999FB9F0064F594 /* UsersTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B2D962999FB9F0064F594 /* UsersTitleView.swift */; };
+		F88B2DA02999FB9F0064F594 /* UsersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B2D972999FB9F0064F594 /* UsersListView.swift */; };
+		F88B2DA12999FB9F0064F594 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B2D982999FB9F0064F594 /* UserDetailView.swift */; };
+		F88B2DA22999FB9F0064F594 /* RandomUsersListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B2D992999FB9F0064F594 /* RandomUsersListApp.swift */; };
+		F88B2DA32999FB9F0064F594 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B2D9B2999FB9F0064F594 /* Error.swift */; };
+		F88B2DA42999FB9F0064F594 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B2D9C2999FB9F0064F594 /* Networking.swift */; };
+		F88B2DA52999FB9F0064F594 /* ResponseObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88B2D9D2999FB9F0064F594 /* ResponseObjects.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +41,6 @@
 
 /* Begin PBXFileReference section */
 		F88B2D662999FA630064F594 /* RandomUsers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomUsers.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F88B2D692999FA630064F594 /* RandomUsersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersApp.swift; sourceTree = "<group>"; };
-		F88B2D6B2999FA630064F594 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F88B2D6D2999FA640064F594 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F88B2D702999FA640064F594 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F88B2D762999FA650064F594 /* RandomUsersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RandomUsersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +48,14 @@
 		F88B2D802999FA650064F594 /* RandomUsersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RandomUsersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88B2D842999FA650064F594 /* RandomUsersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersUITests.swift; sourceTree = "<group>"; };
 		F88B2D862999FA650064F594 /* RandomUsersUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUsersUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F88B2D942999FB9F0064F594 /* RandomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomViewModel.swift; sourceTree = "<group>"; };
+		F88B2D962999FB9F0064F594 /* UsersTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersTitleView.swift; sourceTree = "<group>"; };
+		F88B2D972999FB9F0064F594 /* UsersListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersListView.swift; sourceTree = "<group>"; };
+		F88B2D982999FB9F0064F594 /* UserDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
+		F88B2D992999FB9F0064F594 /* RandomUsersListApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomUsersListApp.swift; sourceTree = "<group>"; };
+		F88B2D9B2999FB9F0064F594 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		F88B2D9C2999FB9F0064F594 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		F88B2D9D2999FB9F0064F594 /* ResponseObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseObjects.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +106,9 @@
 		F88B2D682999FA630064F594 /* RandomUsers */ = {
 			isa = PBXGroup;
 			children = (
-				F88B2D692999FA630064F594 /* RandomUsersApp.swift */,
-				F88B2D6B2999FA630064F594 /* ContentView.swift */,
+				F88B2D932999FB9F0064F594 /* Models */,
+				F88B2D9A2999FB9F0064F594 /* RESTApi */,
+				F88B2D952999FB9F0064F594 /* View */,
 				F88B2D6D2999FA640064F594 /* Assets.xcassets */,
 				F88B2D6F2999FA640064F594 /* Preview Content */,
 			);
@@ -125,6 +138,35 @@
 				F88B2D862999FA650064F594 /* RandomUsersUITestsLaunchTests.swift */,
 			);
 			path = RandomUsersUITests;
+			sourceTree = "<group>";
+		};
+		F88B2D932999FB9F0064F594 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F88B2D942999FB9F0064F594 /* RandomViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F88B2D952999FB9F0064F594 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F88B2D962999FB9F0064F594 /* UsersTitleView.swift */,
+				F88B2D972999FB9F0064F594 /* UsersListView.swift */,
+				F88B2D982999FB9F0064F594 /* UserDetailView.swift */,
+				F88B2D992999FB9F0064F594 /* RandomUsersListApp.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F88B2D9A2999FB9F0064F594 /* RESTApi */ = {
+			isa = PBXGroup;
+			children = (
+				F88B2D9B2999FB9F0064F594 /* Error.swift */,
+				F88B2D9C2999FB9F0064F594 /* Networking.swift */,
+				F88B2D9D2999FB9F0064F594 /* ResponseObjects.swift */,
+			);
+			path = RESTApi;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +299,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F88B2D6C2999FA630064F594 /* ContentView.swift in Sources */,
-				F88B2D6A2999FA630064F594 /* RandomUsersApp.swift in Sources */,
+				F88B2DA12999FB9F0064F594 /* UserDetailView.swift in Sources */,
+				F88B2DA52999FB9F0064F594 /* ResponseObjects.swift in Sources */,
+				F88B2D9F2999FB9F0064F594 /* UsersTitleView.swift in Sources */,
+				F88B2DA22999FB9F0064F594 /* RandomUsersListApp.swift in Sources */,
+				F88B2DA02999FB9F0064F594 /* UsersListView.swift in Sources */,
+				F88B2DA32999FB9F0064F594 /* Error.swift in Sources */,
+				F88B2D9E2999FB9F0064F594 /* RandomViewModel.swift in Sources */,
+				F88B2DA42999FB9F0064F594 /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
