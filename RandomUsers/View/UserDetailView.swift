@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UserDetailView<Model>: View where Model: RandomUsersViewModelProtocol {
     
+    var userModel: UserModel
     @ObservedObject var viewModel: Model
     
     var body: some View {
