@@ -33,6 +33,11 @@ struct UsersTitleView<Model>: View where Model: RandomUsersViewModelProtocol{
                 .font(.bold(.custom("Helvetica", size: 18.0))())
                 .clipShape(RoundedRectangle(cornerRadius: 10.0))
         }
+        .onAppear{
+            if viewModel.imageList[imageURL] == nil {
+                viewModel.fetchImage(imageURL: imageURL)
+            }
+        }
     }
 }
 
