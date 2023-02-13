@@ -75,6 +75,20 @@ class UserLocation: Codable, CustomStringConvertible {
     var description: String {
         return "\(street),\n \(city), \(state), \(country), \(postcode ?? "")"
     }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        street = try container.decode(StreetDetails.self, forKey: .street)
+        city = try container.decode(String.self, forKey: .city)
+        state = try container.decode(String.self, forKey: .state)
+        country = try container.decode(String.self, forKey: .country)
+        coordinates = try container.decode(Coordinates.self, forKey: .coordinates)
+        timezone = try container.decode(TimeZone.self, forKey: .timezone)
+
+        let postcodeString = try? container.decode(String.self, forKey: .postcode)
+        let postcodeInt = try? container.decode(Int.self, forKey: .postcode)
+        self.postcode = postcodeString ?? String(postcodeInt ?? 0)
+    }
 }
 
 struct LoginDetails: Codable {
