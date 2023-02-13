@@ -16,8 +16,8 @@ struct UsersListView<Model>: View where Model: RandomUsersViewModelProtocol {
     }
     
     var body: some View {
-        Text("HelloWorld")
         NavigationView {
+            VStack {
                 //Hstack for whole Searchbar and Cancel Button
                 HStack{
                     CustomSearchBar()
