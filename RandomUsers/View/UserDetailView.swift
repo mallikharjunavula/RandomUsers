@@ -36,6 +36,12 @@ struct UserDetailView<Model>: View where Model: RandomUsersViewModelProtocol {
                 .padding(.horizontal)
         }
         .navigationBarTitle(userModel.name.fullName, displayMode: .inline)
+        .onAppear {
+            if viewModel.imageList[userModel.picture.large] == nil {
+                viewModel.fetchImage(imageURL: userModel.picture.large)
+            }
+        }
+    }
     
     func fetchData() -> [String] {
         return ["Name:", userModel.name.fullName, "Gender:" , userModel.gender,
