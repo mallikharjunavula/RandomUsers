@@ -21,7 +21,18 @@ struct UsersTitleView<Model>: View where Model: RandomUsersViewModelProtocol{
     }
     
     var body: some View {
-        Text("HelloWorld")
+        HStack(spacing: 20.0) {
+            Image(uiImage: (UIImage(data: (viewModel.imageList[imageURL] ?? Data()) ?? Data()) ?? UIImage(named: "placeholder")) ?? UIImage())
+                .clipShape(RoundedRectangle(cornerRadius: 16.0))
+                .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(.blue, lineWidth: 1)
+                    )
+            Text(title)
+                .padding(8.0)
+                .font(.bold(.custom("Helvetica", size: 18.0))())
+                .clipShape(RoundedRectangle(cornerRadius: 10.0))
+        }
     }
 }
 
