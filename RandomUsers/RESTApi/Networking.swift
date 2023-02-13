@@ -21,11 +21,21 @@ class APIModule {
 }
 
 enum Endpoint {
-    static let base = "https://randomuser.me/api"
+    static let base = "https://randomuser.me/api/?results=50"
+    
+    case randomUsers
+    case fetchImage(imageUrl: String)
     
     var stringValue: String {
+        switch self {
+        case .randomUsers: return Endpoint.base
+        case .fetchImage(let imageUrl): return imageUrl
+        }
     }
     
     var url: URL? {
+        return URL(string: stringValue)
+    }
+}
     }
 }
